@@ -15,26 +15,31 @@ public class Player {
     private int damage;
     private int defense;
 
+    // Constants
+    final int minValue = 0;
+    final int maxValue = 100;
+    final String noName = "Undefined";
+
     // Default Constructor
     public Player() {
-        name = "Undefined";
-        health = 100;
-        damage = 1;
-        defense = 1;
+        name = noName;
+        health = maxValue;
+        damage = minValue + 1;
+        defense = minValue + 1;
     }
 
     // Constructor with parameters
     public Player(String name, int health, int damage, int defense) {
-        this.name = (!name.isBlank()) ? name : "Undefined";
-        this.health = (health > 0 && health < 101) ? health : 100;
-        this.damage = (damage > 0 && damage < 101) ? damage : 1;
-        this.defense = (defense > 0 && defense < 101) ? defense : 1;
+        this.name = (!name.isBlank()) ? name : noName;
+        this.health = (health > minValue && health <= maxValue) ? health : maxValue;
+        this.damage = (damage > minValue && damage <= maxValue) ? damage : minValue + 1;
+        this.defense = (defense > minValue && defense <= maxValue) ? defense : minValue + 1;
     }
  
     /* Setters and Getters for each field */
     // Name
     public void setName(String name) {
-        this.name = (!name.isBlank()) ? name : "Undefined";
+        this.name = (!name.isBlank()) ? name : noName;
     }
 
     public String getName() {
@@ -42,7 +47,7 @@ public class Player {
     }
     // Health
     public void setHealth(int health) {
-        this.health = (health > 0 && health < 101) ? health : 100;
+        this.health = (health > minValue && health <= maxValue) ? health : maxValue;
     }
 
     public int getHealth() {
@@ -50,7 +55,7 @@ public class Player {
     }
     // Damage
     public void setDamage(int damage) {
-        this.damage = (damage > 0 && damage < 101) ? damage : 1;
+        this.damage = (damage > minValue && damage <= maxValue) ? damage : minValue + 1;
     }
 
     public int getDamage() {
@@ -58,7 +63,7 @@ public class Player {
     }
     // Defense
     public void setDefense(int defense) {
-        this.defense = (defense > 0 && defense < 101) ? defense : 1;
+        this.defense = (defense > minValue && defense <= maxValue) ? defense : minValue + 1;
     }
 
     public int getDefense() {

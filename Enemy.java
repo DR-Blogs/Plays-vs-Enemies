@@ -8,12 +8,14 @@ Function: This program creates player and enemy combatants
 import java.util.Scanner;
 
 public class Enemy extends Player {
+    
+    // Create new field
     private String type;
 
     // Default Constructor
     public Enemy() {
         super();
-        this.type = "Undefined";
+        this.type = noName;
     }
 
     // Constructor with parameters
@@ -64,21 +66,28 @@ public class Enemy extends Player {
 
     // Set fields based on enemy type
     private void setEnemyStatsBasedOnType() {
+
+        // Create character and attributes 
+            // health/damage/defense
+        final int minion[] = {10,2,1};
+        final int brawler[] = {30,10,5};
+        final int elite[] = {100,20,20};
+
         switch (type.toLowerCase()) {
             case "minion":
-                setHealth(10);
-                setDamage(2);
-                setDefense(1);
+                setHealth(minion[0]);
+                setDamage(minion[1]);
+                setDefense(minion[2]);
                 break;
             case "brawler":
-                setHealth(30);
-                setDamage(10);
-                setDefense(5);
+                setHealth(brawler[0]);
+                setDamage(brawler[1]);
+                setDefense(brawler[2]);
                 break;
             case "elite":
-                setHealth(100);
-                setDamage(20);
-                setDefense(20);
+                setHealth(elite[0]);
+                setDamage(elite[1]);
+                setDefense(elite[2]);
                 break;
             default:
                 throw new IllegalArgumentException("Invalid enemy type.");
